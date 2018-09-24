@@ -39,7 +39,7 @@
             </div>
         </div>
         <div id="modal">
-            <addStudent></addStudent>
+            <addStudent @recordSave="refreshRecord"></addStudent>
         </div>
     </div>
 </template>
@@ -53,8 +53,8 @@
             }
         },
         methods: {
-            showMessage: function () {
-                alert('asdasddasd');
+            refreshRecord (record) {
+                this.students = record.data;
             }
         },
         created(){

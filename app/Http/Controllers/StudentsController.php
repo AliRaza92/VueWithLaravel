@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Students;
 use App\Http\Requests\Student;
+use App\Students;
 use Illuminate\Http\Request;
 
 class StudentsController extends Controller
@@ -15,8 +15,8 @@ class StudentsController extends Controller
      */
     public function index()
     {
-       $student = Students::get();
-       return response()->json($student,200);
+        $student = Students::get();
+        return response()->json($student, 200);
     }
 
     /**
@@ -32,18 +32,28 @@ class StudentsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Student $student)
+    public function store(Request $request)
     {
-        //
+        $saveStudent = new Students();
+        $saveStudent->name = $request->name;
+        $saveStudent->address = $request->address;
+        $save = $saveStudent->save();
+        if($save){
+            $student = Students::orderBy('created_at', 'desc')->get();
+            return response()->json($student, 200);
+        }
+        else{
+            return "There is an error please check";
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Students  $students
+     * @param  \App\Students $students
      * @return \Illuminate\Http\Response
      */
     public function show(Students $students)
@@ -54,7 +64,7 @@ class StudentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Students  $students
+     * @param  \App\Students $students
      * @return \Illuminate\Http\Response
      */
     public function edit(Students $students)
@@ -65,8 +75,8 @@ class StudentsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Students  $students
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Students $students
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Students $students)
@@ -77,7 +87,7 @@ class StudentsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Students  $students
+     * @param  \App\Students $students
      * @return \Illuminate\Http\Response
      */
     public function destroy(Students $students)
