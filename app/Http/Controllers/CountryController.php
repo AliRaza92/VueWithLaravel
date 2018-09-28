@@ -15,7 +15,7 @@ class CountryController extends Controller
     public function index()
     {
         $country = Country::get();
-        return response()->json($country,200);
+        return response()->json($country, 200);
     }
 
     /**
@@ -31,18 +31,27 @@ class CountryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $newCountry = new Country();
+        $newCountry->name = $request->countryName;
+        $newCountry->number = $request->CountryShortCode;
+        $save = $newCountry->save();
+        if ($save) {
+            $country = Country::get();
+            return response()->json($country, 200);
+        } else {
+            return "please check there is an error";
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Country  $country
+     * @param  \App\Country $country
      * @return \Illuminate\Http\Response
      */
     public function show(Country $country)
@@ -53,7 +62,7 @@ class CountryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Country  $country
+     * @param  \App\Country $country
      * @return \Illuminate\Http\Response
      */
     public function edit(Country $country)
@@ -64,8 +73,8 @@ class CountryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Country  $country
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Country $country
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Country $country)
@@ -76,7 +85,7 @@ class CountryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Country  $country
+     * @param  \App\Country $country
      * @return \Illuminate\Http\Response
      */
     public function destroy(Country $country)

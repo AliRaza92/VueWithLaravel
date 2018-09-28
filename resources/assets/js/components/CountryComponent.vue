@@ -4,7 +4,8 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-danger">
                     <div class="panel-body">
-                        List of Country
+                        List of Country <span><a class="btn btn-primary pull-right" data-toggle="modal"
+                                                 data-target="#addCountry">Add Country</a></span>
                         <table class="table">
                             <thead>
                             <th>Name</th>
@@ -24,9 +25,11 @@
                 </div>
             </div>
         </div>
+        <addCountry></addCountry>
     </div>
 </template>
 <script type="text/javascript">
+    Vue.component('addCountry', require('./Country/AddCountry.vue'));
     export default{
         data(){
             return {
