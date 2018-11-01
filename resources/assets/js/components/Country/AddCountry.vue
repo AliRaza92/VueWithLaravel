@@ -26,7 +26,8 @@
         data(){
             return {
                 'countryName': 'Name',
-                'CountryShortCode': 'Short code'
+                'CountryShortCode': 'Short code',
+                errors:[]
             }
         },
         methods: {
@@ -39,8 +40,9 @@
                     this.countryName = '';
                     this.CountryShortCode = '';
                 }).catch(error => {
-                    alert('there is an error');
-                    console.log('there is an error');
+                    this.error = error.response.data.errors;
+                    alert(this.error);
+                    console.log(this.error);
                 });
             }
         }
