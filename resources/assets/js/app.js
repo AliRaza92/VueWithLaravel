@@ -21,7 +21,7 @@ Vue.use(VueRouter)
 const example = require('./components/Example.vue');
 const students = require('./components/StudentComponent.vue');
 const countries = require('./components/CountryComponent.vue');
-
+const favourites = require('./components/ListFavourtiesComponent.vue');
 
 const routes = [
     {
@@ -35,6 +35,10 @@ const routes = [
     {
         path: '/country',
         component: countries
+    },
+    {
+        path: '/favourites',
+        component: favourites
     }
 ];
 
