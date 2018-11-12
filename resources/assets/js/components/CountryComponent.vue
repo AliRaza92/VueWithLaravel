@@ -13,10 +13,10 @@
                             <th>Action</th>
                             </thead>
                             <tbody>
-                            <tr v-for="country in countries">
+                            <tr v-for="country in countries" :key="country.id">
                                 <td>{{country.name}}</td>
                                 <td>{{country.number}}</td>
-                                <td><a type="button" class="btn btn-primary">Edit</a><a type="button" class="btn btn-danger">Delete</a></td>
+                                <td><a type="button" class="btn btn-primary">Edit</a><a type="button" @click.prevent="deleteCountry(country.id)" class="btn btn-danger">Delete</a></td>
                             </tr>
                             </tbody>
                         </table>
@@ -38,7 +38,20 @@
                 countries: []
             }
         },
-        methods: {},
+        methods: {
+            deleteCountry(id){
+                let conf = confirm("Are you sure you want to delete this ?");
+                if(conf){
+                    axios.delete('/country/'+id)
+                        .then(response => {
+                            alert('record has been deleted');
+                        })
+                        .catch(error => {
+                            alert('Something went wrong');
+                        })
+                }
+            }
+        },
         created(){
             axios.get('/country')
                 .then((response) =>

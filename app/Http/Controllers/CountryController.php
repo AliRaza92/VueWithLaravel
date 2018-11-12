@@ -91,6 +91,8 @@ class CountryController extends Controller
      */
     public function destroy(Country $country)
     {
-        //
+        $record = Country::findOrFail($country->id);
+        $record->delete();
+        return;
     }
 }

@@ -3,7 +3,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" @click="ClearModal" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Add New Country</h4>
                 </div>
                 <div class="modal-body">
@@ -47,6 +47,11 @@
                 }).catch(error => {
                     this.errors = error.response.data.errors;
                 });
+            },
+            ClearModal(e){
+               this.errors=[];
+               e.preventDefault();
+
             }
         }
 
