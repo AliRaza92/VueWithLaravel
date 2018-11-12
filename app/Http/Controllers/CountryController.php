@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Country;
+use App\Http\Requests\CountryRequest;
 use Illuminate\Http\Request;
 
 class CountryController extends Controller
@@ -34,7 +35,7 @@ class CountryController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CountryRequest $request)
     {
         $newCountry = new Country();
         $newCountry->name = $request->countryName;

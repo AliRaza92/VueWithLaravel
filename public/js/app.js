@@ -46930,7 +46930,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -46941,6 +46941,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -47078,7 +47080,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47112,12 +47114,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            'countryName': 'Name',
-            'CountryShortCode': 'Short code',
+            'countryName': '',
+            'CountryShortCode': '',
             errors: []
         };
     },
@@ -47130,13 +47138,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'countryName': this.countryName,
                 'CountryShortCode': this.CountryShortCode
             }).then(function (data) {
-                alert('data inserted');
                 _this.countryName = '';
                 _this.CountryShortCode = '';
             }).catch(function (error) {
-                _this.error = error.response.data.errors;
-                alert(_this.error);
-                console.log(_this.error);
+                _this.errors = error.response.data.errors;
             });
         }
     }
@@ -47185,6 +47190,17 @@ var render = function() {
                 }
               }),
               _vm._v(" "),
+              _vm.errors
+                ? _c(
+                    "ul",
+                    _vm._l(_vm.errors.countryName, function(err) {
+                      return _c("li", { staticClass: "alert alert-danger" }, [
+                        _vm._v(_vm._s(err))
+                      ])
+                    })
+                  )
+                : _vm._e(),
+              _vm._v(" "),
               _c("label", [_vm._v("Country ShortCode")]),
               _vm._v(" "),
               _c("input", {
@@ -47207,7 +47223,18 @@ var render = function() {
                     _vm.CountryShortCode = $event.target.value
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _vm.errors
+                ? _c(
+                    "ul",
+                    _vm._l(_vm.errors.CountryShortCode, function(err) {
+                      return _c("li", { staticClass: "alert alert-danger" }, [
+                        _vm._v(_vm._s(err))
+                      ])
+                    })
+                  )
+                : _vm._e()
             ])
           ]),
           _vm._v(" "),
@@ -47283,14 +47310,16 @@ var render = function() {
                     return _c("tr", [
                       _c("td", [_vm._v(_vm._s(country.name))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(country.number))])
+                      _c("td", [_vm._v(_vm._s(country.number))]),
+                      _vm._v(" "),
+                      _vm._m(2, true)
                     ])
                   })
                 )
               ])
             ]),
             _vm._v(" "),
-            _vm._m(2)
+            _vm._m(3)
           ])
         ])
       ]),
@@ -47323,7 +47352,22 @@ var staticRenderFns = [
     return _c("thead", [
       _c("th", [_vm._v("Name")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Address")])
+      _c("th", [_vm._v("Address")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Action")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("a", { staticClass: "btn btn-primary", attrs: { type: "button" } }, [
+        _vm._v("Edit")
+      ]),
+      _c("a", { staticClass: "btn btn-danger", attrs: { type: "button" } }, [
+        _vm._v("Delete")
+      ])
     ])
   },
   function() {

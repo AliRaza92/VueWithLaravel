@@ -10,8 +10,14 @@
                     <form class="form-horizontal">
                         <label>Country Name</label>
                         <input type="text" class="form-control" name="countryName" v-model="countryName">
+                        <ul v-if="errors">
+                            <li v-for="err in errors.countryName" class="alert alert-danger">{{err}}</li>
+                        </ul>
                         <label>Country ShortCode</label>
                         <input type="text" name="CountryShortCode" class="form-control" v-model="CountryShortCode">
+                        <ul v-if="errors">
+                            <li v-for="err in errors.CountryShortCode" class="alert alert-danger">{{err}}</li>
+                        </ul>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -25,9 +31,9 @@
     export default{
         data(){
             return {
-                'countryName': 'Name',
-                'CountryShortCode': 'Short code',
-                errors:[]
+                'countryName': '',
+                'CountryShortCode': '',
+                 errors: []
             }
         },
         methods: {
@@ -36,13 +42,10 @@
                     'countryName': this.countryName,
                     'CountryShortCode': this.CountryShortCode
                 }).then(data => {
-                    alert('data inserted');
                     this.countryName = '';
                     this.CountryShortCode = '';
                 }).catch(error => {
-                    this.error = error.response.data.errors;
-                    alert(this.error);
-                    console.log(this.error);
+                    this.errors = error.response.data.errors;
                 });
             }
         }

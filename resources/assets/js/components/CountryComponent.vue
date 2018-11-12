@@ -10,11 +10,13 @@
                             <thead>
                             <th>Name</th>
                             <th>Address</th>
+                            <th>Action</th>
                             </thead>
                             <tbody>
                             <tr v-for="country in countries">
                                 <td>{{country.name}}</td>
                                 <td>{{country.number}}</td>
+                                <td><a type="button" class="btn btn-primary">Edit</a><a type="button" class="btn btn-danger">Delete</a></td>
                             </tr>
                             </tbody>
                         </table>
