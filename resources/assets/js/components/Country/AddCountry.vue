@@ -44,6 +44,7 @@
                 }).then(data => {
                     this.countryName = '';
                     this.CountryShortCode = '';
+                    
                 }).catch(error => {
                     this.errors = error.response.data.errors;
                 });
