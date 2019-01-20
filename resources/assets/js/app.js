@@ -26,6 +26,7 @@ const students = require('./components/StudentComponent.vue');
 const countries = require('./components/CountryComponent.vue');
 const sample = require('./components/VuetifySample.vue');
 
+const favourites = require('./components/ListFavourtiesComponent.vue');
 
 const routes = [
     {
@@ -39,6 +40,10 @@ const routes = [
     {
         path: '/country',
         component: countries
+    },
+    {
+        path: '/favourites',
+        component: favourites
     },
     {
         path: '/sample',

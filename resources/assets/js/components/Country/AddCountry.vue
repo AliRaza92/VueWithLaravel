@@ -3,15 +3,21 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" @click="ClearModal" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">Add New Country</h4>
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal">
                         <label>Country Name</label>
                         <input type="text" class="form-control" name="countryName" v-model="countryName">
+                        <ul v-if="errors">
+                            <li v-for="err in errors.countryName" class="alert alert-danger">{{err}}</li>
+                        </ul>
                         <label>Country ShortCode</label>
                         <input type="text" name="CountryShortCode" class="form-control" v-model="CountryShortCode">
+                        <ul v-if="errors">
+                            <li v-for="err in errors.CountryShortCode" class="alert alert-danger">{{err}}</li>
+                        </ul>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -25,8 +31,9 @@
     export default{
         data(){
             return {
-                'countryName': 'Name',
-                'CountryShortCode': 'Short code'
+                'countryName': '',
+                'CountryShortCode': '',
+                 errors: []
             }
         },
         methods: {
@@ -35,13 +42,17 @@
                     'countryName': this.countryName,
                     'CountryShortCode': this.CountryShortCode
                 }).then(data => {
-                    alert('data inserted');
                     this.countryName = '';
                     this.CountryShortCode = '';
+                    
                 }).catch(error => {
-                    alert('there is an error');
-                    console.log('there is an error');
+                    this.errors = error.response.data.errors;
                 });
+            },
+            ClearModal(e){
+               this.errors=[];
+               e.preventDefault();
+
             }
         }
 

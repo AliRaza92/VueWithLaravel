@@ -59,12 +59,12 @@
         },
         created(){
             axios.get('/student')
-                .then((response) => this.students = response.data)
+                .then(response => {
+                    console.log(response.data);
+                    this.students = response.data})
                 .catch((error) => console.log(error));
         }
     }
 </script>
-
 <style>
-
 </style>

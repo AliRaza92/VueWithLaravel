@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Student;
+use App\Http\Requests\StudentRequest;
 use App\Students;
 use Illuminate\Http\Request;
 
@@ -35,17 +36,16 @@ class StudentsController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StudentRequest $request)
     {
         $saveStudent = new Students();
         $saveStudent->name = $request->name;
         $saveStudent->address = $request->address;
         $save = $saveStudent->save();
-        if($save){
+        if ($save) {
             $student = Students::orderBy('created_at', 'desc')->get();
             return response()->json($student, 200);
-        }
-        else{
+        } else {
             return "There is an error please check";
         }
     }
