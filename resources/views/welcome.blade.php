@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+    <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
     <title>Laravel</title>
 
     <!-- Fonts -->
@@ -96,6 +98,7 @@
                 </button>
                 <a class="navbar-brand"><router-link to="/">Student</router-link></a>
                 <a class="navbar-brand"><router-link to="/country">Countries</router-link></a>
+
             </div>
             <div class="collapse navbar-collapse navbar-exl-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -113,3 +116,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+
+
+{{-- link for laravel vue and vuetify setup
+https://medium.com/carbono/create-a-single-page-application-12133951b49f--}}

@@ -8,9 +8,12 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+
 import VueRouter from 'vue-router'
+import Vuetify from 'vuetify'
 
 Vue.use(VueRouter)
+Vue.use(Vuetify)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -21,6 +24,7 @@ Vue.use(VueRouter)
 const example = require('./components/Example.vue');
 const students = require('./components/StudentComponent.vue');
 const countries = require('./components/CountryComponent.vue');
+const sample = require('./components/VuetifySample.vue');
 
 
 const routes = [
@@ -35,6 +39,10 @@ const routes = [
     {
         path: '/country',
         component: countries
+    },
+    {
+        path: '/sample',
+        component: sample
     }
 ];
 
